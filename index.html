@@ -3,15 +3,20 @@
 
 <head>
     <title>Collatz</title>
-    <style>
+    <style> 
         * {
             font-family : 'Courier New', Courier, monospace
         }
         .math {
-            padding-left: 5em;
+            padding-left: 5em; 
+        }
+        .ex {
+            max-height: 20em;
+            overflow: scroll;
         }
 
     </style>
+    <script src="collatz.js"></script>
 </head>
 
 <body>
@@ -28,7 +33,7 @@
     <p>
         Here are some examples. We create sequences by taking a<sub>1</sub> to equal x, the starting value.
         We then use the rule a<sub>n</sub> = f(a<sub>n-1</sub>)
-        <ul>
+        <ul class="ex" id="ex1">
             <li>1 -> 4 -> 2 -> 1. This demonstrates that 1 is a loop.</li>
             <li>2 -> 1. Powers of 2 simplify easy</li>
             <li>3 -> 10 -> 5 -> 16 -> 8 -> 4 -> 2 -> 1. Longest string so far is 1 below a power of 2</li>
@@ -42,7 +47,7 @@
         </ul>
         To solve the repetition problem let -> be transitive. ei, if a -> b -> c, then a -> c.
         To see this in effect lets redo the examples
-        <ul>
+        <ul class="ex" id="ex2">
             <li>1 -> 4 -> 2 -> 1.</li>
             <li>2 -> 1. </li>
             <li>3 -> 10 -> 5 -> 16 -> 8 -> 4 -> 1. notice that 2 is ommited since we already know 4 -> 2 -> 1</li>
@@ -58,6 +63,7 @@
         Since even numbers are divided by 2 until they are odd, they strip away all the 2s from a numbers prime factorization.
         For example, look at the collatz sequences of numbers broken into their prime factors
     
+
         <ul>
             <li>3  = 3 -> 1. </li>
             <li>6  = 2*3 -> 3 -> 1</li>
@@ -70,7 +76,7 @@
         In effect this means we ignore powers of 2, and we can now focus only on odd numbers.
         Lets look at the collatz sequences focusing on prime factorizations ignoring powers of 2.
 
-        <ul>
+        <ul class="ex" id="ex3">
             <li>3 -> 5 -> 1</li>
             <li>5 -> 1</li>
             <li>7 -> 11 -> 17 -> 13 -> 5 -> 1</li>
@@ -103,7 +109,7 @@
         </ul>
 
         Lets look at some examples.
-        <ul>
+        <ul class="ex" id="ex4">
             <li>1: 1 -> 100 -> 1. </li>
             <li>3: 11 -> 1010 -> 101 -> 10000 -> 1.</li>
             <li>5: 101 -> 1</li>
@@ -151,7 +157,10 @@
             <li>15 = 0</li>
         </ul>
     </p>
+    <div id="test"></div>
+
 
 </body>
 
 </html>
+
