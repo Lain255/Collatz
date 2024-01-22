@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Collatz</title>
+    <style>
+        * {
+            font-family : 'Courier New', Courier, monospace
+        }
+        .math {
+            padding-left: 5em;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>The Collatz Conjecture</h1>
+    <p>
+        The Collatz Conjecture is a simple statement that is hard to prove. Given the funtion
+    </p>
+    <div class="math">
+        f(x) = 3x+1 if x is odd, otherwise x/2
+    </div>
+    <p>
+        In other words, given any seed value x, does iterating f eventually give 1?
+    </p>
+    <p>
+        Here are some examples. We create sequences by taking a<sub>1</sub> to equal x, the starting value.
+        We then use the rule a<sub>n</sub> = f(a<sub>n-1</sub>)
+        <ul>
+            <li>1 -> 4 -> 2 -> 1. This demonstrates that 1 is a loop.</li>
+            <li>2 -> 1. Powers of 2 simplify easy</li>
+            <li>3 -> 10 -> 5 -> 16 -> 8 -> 4 -> 2 -> 1. Longest string so far is 1 below a power of 2</li>
+            <li>4 -> 2 -> 1. Powers of 2 simplify easy</li>
+            <li>5 -> 16 -> 8 -> 4 -> 2 -> 1. This sequence is a subsequence of 3s expansion</li>
+        </ul>
+        If you continue these expansions you may notice a few things.
+        <ul>
+            <li>All the numbers have given 1 eventually (If you found a number that doesnt, you just solved the collatz conjecture)</li>
+            <li>There is alot of repetition. for example, 5s sequence is a subsequence of 3s sequence</li>
+        </ul>
+        To solve the repetition problem let -> be transitive. ei, if a -> b -> c, then a -> c.
+        To see this in effect lets redo the examples
+        <ul>
+            <li>1 -> 4 -> 2 -> 1.</li>
+            <li>2 -> 1. </li>
+            <li>3 -> 10 -> 5 -> 16 -> 8 -> 4 -> 1. notice that 2 is ommited since we already know 4 -> 2 -> 1</li>
+            <li>4 -> 1. Powers of 2 simplify easy</li>
+            <li>5 -> 1. 5s expansion is simplified alot since it is a subsequence of a previous sequence</li>
+        </ul>
+        -> helps abstract away the number of iterations and focuses on if a number reaches a known 1 terminating sequence.
+        
+    </p>
+    <h2>Prime Factors, and Simple 2s</h2>
+    <p>
+        When first tackling the problem, abstracting away the 2s is usually the first step. 
+        Since even numbers are divided by 2 until they are odd, they strip away all the 2s from a numbers prime factorization.
+        For example, look at the collatz sequences of numbers broken into their prime factors
+    
+        <ul>
+            <li>3  = 3 -> 1. </li>
+            <li>6  =                     2*3 -> 3 -> 1</li>
+            <li>12 =            2*2*3 -> 2*3 -> 3 -> 1</li>
+            <li>24 = 2*2*2*3 -> 2*2*3 -> 2*3 -> 3 -> 1</li>
+        </ul>
+
+        Notice all the powers of two vanish and leave 3. In general x*2<sup>n</sup> -> x.
+        This means x*2<sup>n</sup> forms an equivilance class that all collapse to n.
+        In effect this means we ignore powers of 2, and we can now focus only on odd numbers.
+        Lets look at the collatz sequences focusing on prime factorizations ignoring powers of 2.
+
+        <ul>
+            <li>3 -> 5 -> 1</li>
+            <li>5 -> 1</li>
+            <li>7 -> 11 -> </li>
+
+        </ul>
+
+
+
+
+    </p>
+</body>
+
+</html>
+
