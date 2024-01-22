@@ -60,8 +60,8 @@
     
         <ul>
             <li>3  = 3 -> 1. </li>
-            <li>6  =                     2*3 -> 3 -> 1</li>
-            <li>12 =            2*2*3 -> 2*3 -> 3 -> 1</li>
+            <li>6  = 2*3 -> 3 -> 1</li>
+            <li>12 = 2*2*3 -> 2*3 -> 3 -> 1</li>
             <li>24 = 2*2*2*3 -> 2*2*3 -> 2*3 -> 3 -> 1</li>
         </ul>
 
@@ -73,15 +73,85 @@
         <ul>
             <li>3 -> 5 -> 1</li>
             <li>5 -> 1</li>
-            <li>7 -> 11 -> </li>
+            <li>7 -> 11 -> 17 -> 13 -> 5 -> 1</li>
+            <li>9 -> 7 -> 1</li> 
+            <li>11 -> 1</li>
+            <li>13 -> 1</li>
+        </ul>
 
+        The pattern in prime factorizations is hard to follow, so we need a change in perspective.
+
+    </p>
+    <h2>Binary Representation</h2>
+    <p>
+        Binary represents the problem well in a couple of ways.
+        We will use the term binary string to mean the binary representation of a number.
+        s will be used to a group of digits of variable length and values.
+        exponentiation of a binary string will be interpeted as repetition of those digits.
+
+        <ul>
+            <li>
+                Binary limit the number of digits.
+                This can help in finding patterns and approaching the problem in different ways
+            </li>
+            <li>
+                Dividing by 2 until even is super easy in binary. s0<sup>n</sup> -> s
+            </li>
+            <li>
+                3x+1 can be interpeted as 2x+x+1 which in binary is equivilant to s1+s
+            </li>
+        </ul>
+
+        Lets look at some examples.
+        <ul>
+            <li>1: 1 -> 100 -> 1. </li>
+            <li>3: 11 -> 1010 -> 101 -> 10000 -> 1.</li>
+            <li>5: 101 -> 1</li>
+            <li>7: 111 -> 1011 -> 10001 -> 1101 -> 101 -> 1</li>
         </ul>
 
 
+        This may look unorganized, but the inverses have patterns. The following is an example. note that multiples of 3 are skipped because they have no inverses.
+        <ul>
+            <li>101 -> 1</li>
+            <li>undefined -> 3 </li>
+            <li>11 -> 5 </li>
+            <li>1001-> 7 </li>
+            <li>undefined -> 9 </li>
+            <li>111 -> 11 </li>
+            <li>10001 -> 13 </li>
+            <li>undefined -> 15 </li>
+            <li>1011-> 17 </li>
+            <li>11001-> 19 </li>
+            <li>undefined -> 21 </li>
+            <li>1111-> 23 </li>
+            <li>100001 -> 25 </li>
+        </ul>
 
-
+        It may be hard to see but the inverses are ordered in a binary fractal.
+    </p>    
+    <h2>Binary Fractal, and the Binary Lookup</h2>
+    <p>
+        To explain the idea of the binary fractal, look at the pattern in the number of factors of 2 in the natural numbers.
+        <ul>
+            <li>1 = 0</li>
+            <li>2 = 1</li>
+            <li>3 = 0</li>
+            <li>4 = 2</li>
+            <li>5 = 0</li>
+            <li>6 = 1</li>
+            <li>7 = 0</li>
+            <li>8 = 3</li>
+            <li>9 = 0</li>
+            <li>10 = 1</li>
+            <li>11 = 0</li>
+            <li>12 = 2</li>
+            <li>13 = 0</li>
+            <li>14 = 1</li>
+            <li>15 = 0</li>
+        </ul>
     </p>
+
 </body>
 
 </html>
-
