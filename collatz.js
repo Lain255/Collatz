@@ -1,7 +1,5 @@
 import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
 
-
-
 function primeFactorsList(n) {
     let factors = []
     let factor = 2
