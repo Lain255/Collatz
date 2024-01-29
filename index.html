@@ -16,7 +16,7 @@
         }
 
     </style>
-    <script src="collatz.js"></script>
+    <script src="collatz.js" type="module"></script>
 </head>
 
 <body>
@@ -28,11 +28,16 @@
         f(x) = 3x+1 if x is odd, otherwise x/2
     </div>
     <p>
-        In other words, given any seed value x, does iterating f eventually give 1?
+        and the sequence generator
+    </p>
+    <div class="math">
+        S(m) : a<sub>0</sub> = m, a<sub>n</sub> = f(a<sub>n-1</sub>)
+    </div>
+    <p>
+        For any positive integer m, does there exist a positive integer n such that a<sub>n</sub> = 1? 
     </p>
     <p>
-        Here are some examples. We create sequences by taking a<sub>1</sub> to equal x, the starting value.
-        We then use the rule a<sub>n</sub> = f(a<sub>n-1</sub>)
+        Here are some generated sequences as examples. 
         <ul class="ex" id="ex1">
             <li>1 -> 4 -> 2 -> 1. This demonstrates that 1 is a loop.</li>
             <li>2 -> 1. Powers of 2 simplify easy</li>
@@ -40,13 +45,18 @@
             <li>4 -> 2 -> 1. Powers of 2 simplify easy</li>
             <li>5 -> 16 -> 8 -> 4 -> 2 -> 1. This sequence is a subsequence of 3s expansion</li>
         </ul>
+        graphing the length of each generated sequence gives a chaotic graph.
+        <div id="g1"></div>
+
         If you continue these expansions you may notice a few things.
         <ul>
             <li>All the numbers have given 1 eventually (If you found a number that doesnt, you just solved the collatz conjecture)</li>
             <li>There is alot of repetition. for example, 5s sequence is a subsequence of 3s sequence</li>
         </ul>
-        To solve the repetition problem let -> be transitive. ei, if a -> b -> c, then a -> c.
-        To see this in effect lets redo the examples
+        To solve the repetition problem let -> be defined as follows. a -> b iff b is an element in S(a).
+        So if b shows up after a then a -> b. -> is transitive so it lets us skip known subsequences. 
+        -> helps abstract away the number of iterations and focuses on if a number reaches a known 1 terminating sequence.
+        The following example shows strips away even numbers using ->. This reasoning behind this will be explained in the next section
         <ul class="ex" id="ex2">
             <li>1 -> 4 -> 2 -> 1.</li>
             <li>2 -> 1. </li>
@@ -54,7 +64,16 @@
             <li>4 -> 1. Powers of 2 simplify easy</li>
             <li>5 -> 1. 5s expansion is simplified alot since it is a subsequence of a previous sequence</li>
         </ul>
-        -> helps abstract away the number of iterations and focuses on if a number reaches a known 1 terminating sequence.
+        
+
+        Graphing the length of each sequence excluding even numbers gives a familiar graph
+        <div id="g2"></div>
+
+        When compared to the earlier graph that includes even numbers the shapes are nearly identical
+        <div id="g3"></div>
+
+        graphing the ratio between the graphs shows an average ratio around 3 with spikes around powers of 2
+        <div id="g4"></div>
         
     </p>
     <h2>Prime Factors, and Simple 2s</h2>
@@ -84,9 +103,11 @@
             <li>11 -> 1</li>
             <li>13 -> 1</li>
         </ul>
+        
+
 
         The pattern in prime factorizations is hard to follow, so we need a change in perspective.
-
+       
     </p>
     <h2>Binary Representation</h2>
     <p>
@@ -116,6 +137,14 @@
             <li>7: 111 -> 1011 -> 10001 -> 1101 -> 101 -> 1</li>
         </ul>
 
+        Here are som general rules for simplifying binary strings
+        <ul>
+            <li>s0<sup>n</sup> -> n.</li>
+            <li>s1(01)<sup>n</sup> -> s1</li>
+            <li>s01<sup>n</sup> -> (3s+1)01<sup>n-1</sup></li>
+            <li>s10<sup>n</sup>1 -> (3s+1)10<sup>n-2</sup>1</li>
+        </ul>
+
 
         This may look unorganized, but the inverses have patterns. The following is an example. note that multiples of 3 are skipped because they have no inverses.
         <ul>
@@ -139,25 +168,9 @@
     <h2>Binary Fractal, and the Binary Lookup</h2>
     <p>
         To explain the idea of the binary fractal, look at the pattern in the number of factors of 2 in the natural numbers.
-        <ul>
-            <li>1 = 0</li>
-            <li>2 = 1</li>
-            <li>3 = 0</li>
-            <li>4 = 2</li>
-            <li>5 = 0</li>
-            <li>6 = 1</li>
-            <li>7 = 0</li>
-            <li>8 = 3</li>
-            <li>9 = 0</li>
-            <li>10 = 1</li>
-            <li>11 = 0</li>
-            <li>12 = 2</li>
-            <li>13 = 0</li>
-            <li>14 = 1</li>
-            <li>15 = 0</li>
-        </ul>
     </p>
-    <div id="test"></div>
+    <div id="g5"></div>
+    
 
 
 </body>
